@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "SteppingStoneAlgorithm", "SteppingStoneAlgorithm\SteppingStoneAlgorithm.fsproj", "{346908A2-FC54-4DAE-8999-C947E988CB67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{346908A2-FC54-4DAE-8999-C947E988CB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{346908A2-FC54-4DAE-8999-C947E988CB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{346908A2-FC54-4DAE-8999-C947E988CB67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{346908A2-FC54-4DAE-8999-C947E988CB67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82940AD8-1F46-4ADA-9B1E-34F2256C7A21}
+	EndGlobalSection
+EndGlobal
