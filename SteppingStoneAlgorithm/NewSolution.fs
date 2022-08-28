@@ -21,22 +21,45 @@
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
    THE SOFTWARE.
 *)
-
-module Program
-
-
-let srcCapacity = SampleData1.srcCapacity
-let dstCapacity = SampleData1.dstCapacity
-let costMatrix = SampleData1.costMatrix
+module NewSolution
 
 
-let solver = Solver.Solver(costMatrix, srcCapacity, dstCapacity)
+let rec private find_min path = 
+    match path with
+    | [_;(_, _, v)] -> v
+    | _::(_, _, v)::t -> min v (find_min t)
+    | _ -> failwith "Unexpected data for find_min."
 
-// Go through all the solutions in the sequence and
-// observe the total cost going down. costs has these
-// numbers in a list to print or look at in the debugger.
-let costs = solver.Steps |> Seq.mapi (fun i s -> (i, solver.Cost s)) |> Seq.toList
 
+let new_path path =
+    let m = find_min path
+    let rec flatten p =
+        match p with
+        | (r1, c1, v1)::(r2, c2, v2)::t -> 
+            (r1, c1, v1 + m)::(r2, c2, v2 - m)::flatten t
+        | _ -> []
+    flatten path    
+
+let rec private remove_first pred lst =
+    match lst with
+    | h::t when pred h -> t
+    | h::t -> h::remove_first pred t
+    | _ -> []
+
+let rec private remove_first_zero_t =
+    function    | (h::t) -> h::remove_first (fun (_, _, v) -> v=0) t 
+                | _ -> []
+
+    
+
+let transform_basis_solution solution new_path =
+    let change_set = 
+        new_path |> Seq.map (fun (r, c, _) -> (r, c)) |> Set.ofSeq
+    let nonzero_new_path =
+        new_path |> remove_first_zero_t
+    solution 
+    |> List.filter (fun (r, c, _) -> not (change_set.Contains(r, c)))
+    |> List.append nonzero_new_path
 
 
 

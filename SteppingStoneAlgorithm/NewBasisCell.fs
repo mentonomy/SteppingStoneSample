@@ -22,22 +22,19 @@
    THE SOFTWARE.
 *)
 
-module Program
+module NewBasisCell
 
 
-let srcCapacity = SampleData1.srcCapacity
-let dstCapacity = SampleData1.dstCapacity
-let costMatrix = SampleData1.costMatrix
-
-
-let solver = Solver.Solver(costMatrix, srcCapacity, dstCapacity)
-
-// Go through all the solutions in the sequence and
-// observe the total cost going down. costs has these
-// numbers in a list to print or look at in the debugger.
-let costs = solver.Steps |> Seq.mapi (fun i s -> (i, solver.Cost s)) |> Seq.toList
-
-
-
+let find (cM: int Microsoft.FSharp.Math.Matrix) (u:int option array, v:int option array) =
+    let (row, col, _) = 
+        Microsoft.FSharp.Math.Matrix.Generic.foldi
+            (fun row col ((state_row, state_col, state_value) as state) elem ->
+                let value = elem - u.[row].Value - v.[col].Value
+                if value < state_value then
+                    (row, col, value)
+                else
+                    state) 
+            (-1, -1, 0) cM
+    if row >= 0 && col >= 0 then Some(row, col, 0) else None
 
 

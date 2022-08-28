@@ -21,23 +21,21 @@
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
    THE SOFTWARE.
 *)
-
-module Program
-
-
-let srcCapacity = SampleData1.srcCapacity
-let dstCapacity = SampleData1.dstCapacity
-let costMatrix = SampleData1.costMatrix
+module InitialFeasibleSolution
 
 
-let solver = Solver.Solver(costMatrix, srcCapacity, dstCapacity)
-
-// Go through all the solutions in the sequence and
-// observe the total cost going down. costs has these
-// numbers in a list to print or look at in the debugger.
-let costs = solver.Steps |> Seq.mapi (fun i s -> (i, solver.Cost s)) |> Seq.toList
-
-
+(*  North-West Corner Method    *)
+let find_feasible_nwc costMatrix src dst =
+    let rec find_feasible src_l src_idx dst_l dst_idx =
+        match src_l, dst_l with
+        | h_src::t_src, h_dst::t_dst when h_src < h_dst ->
+            (src_idx, dst_idx, h_src)::find_feasible 
+                t_src (src_idx + 1) ((h_dst - h_src)::t_dst) dst_idx
+        | h_src::t_src, h_dst::t_dst ->
+            (src_idx, dst_idx, h_dst)::find_feasible 
+                ((h_src - h_dst)::t_src) src_idx t_dst (dst_idx + 1)
+        | _ -> []
+    find_feasible src 0 dst 0
 
 
 

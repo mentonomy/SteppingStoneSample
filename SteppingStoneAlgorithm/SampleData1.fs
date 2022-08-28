@@ -21,23 +21,20 @@
    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
    THE SOFTWARE.
 *)
-
-module Program
-
-
-let srcCapacity = SampleData1.srcCapacity
-let dstCapacity = SampleData1.dstCapacity
-let costMatrix = SampleData1.costMatrix
+module SampleData1
 
 
-let solver = Solver.Solver(costMatrix, srcCapacity, dstCapacity)
+let srcCapacity = [ 12
+                    1
+                    5 ]
 
-// Go through all the solutions in the sequence and
-// observe the total cost going down. costs has these
-// numbers in a list to print or look at in the debugger.
-let costs = solver.Steps |> Seq.mapi (fun i s -> (i, solver.Cost s)) |> Seq.toList
-
+let dstCapacity = [10;8]
 
 
+let costMatrix = Microsoft.FSharp.Math.Matrix.Generic.ofList
+                    [   [2;4]
+                        [8;12]
+                        [12;6]
+                        ]
 
 
