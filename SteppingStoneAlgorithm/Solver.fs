@@ -1,7 +1,7 @@
 ﻿(*
    The MIT License
 
-   Copyright (c)2011 Fondevila Ltd
+   Copyright (c)2011 Alexander Rautenberg
 
    Permission is hereby granted, free of charge, to any person obtaining a copy
    of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
 *)
 module Solver
 
-type Solver(costMatrix: int Microsoft.FSharp.Math.Matrix,
+type Solver(costMatrix: int Microsoft.FSharp.Math.Matrix, 
             srcCapacity: int list,
             dstCapacity: int list,
             ?FindFeasible) = // Optional: function to determine initial solution

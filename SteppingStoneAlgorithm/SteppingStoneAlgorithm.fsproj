@@ -6,6 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Dual.fs" />
+    <Compile Include="NewBasisCell.fs" />
+    <Compile Include="NewSolution.fs" />
+    <Compile Include="SampleData1.fs" />
+    <Compile Include="SampleData2.fs" />
+    <Compile Include="SteppingStone.fs" />
+    <Compile Include="InitialFeasibleSolution.fs" />
+    <Compile Include="Solver.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
