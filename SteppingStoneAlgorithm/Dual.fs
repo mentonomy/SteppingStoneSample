@@ -24,7 +24,7 @@
 module Dual
 
 
-let calc_dual_values (cM: int Microsoft.FSharp.Math.Matrix) basis_solution =
+let calc_dual_values (cM: int Microsoft.FSharp.Math.Matrix) basis_solution = // Matrix class no longer available, needs fixing
     let rows, cols = cM.Dimensions
     (*  Create arrays to hold the dual values for
         sources (rows) and destinations (columns).

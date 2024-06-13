@@ -23,7 +23,7 @@
 *)
 module Solver
 
-type Solver(costMatrix: int Microsoft.FSharp.Math.Matrix, 
+type Solver(costMatrix: int Microsoft.FSharp.Math.Matrix,  // Matrix class no longer available, needs fixing
             srcCapacity: int list,
             dstCapacity: int list,
             ?FindFeasible) = // Optional: function to determine initial solution

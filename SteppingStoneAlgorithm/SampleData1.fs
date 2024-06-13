@@ -31,7 +31,7 @@ let srcCapacity = [ 12
 let dstCapacity = [10;8]
 
 
-let costMatrix = Microsoft.FSharp.Math.Matrix.Generic.ofList
+let costMatrix = Microsoft.FSharp.Math.Matrix.Generic.ofList // Matrix class no longer available, needs fixing
                     [   [2;4]
                         [8;12]
                         [12;6]

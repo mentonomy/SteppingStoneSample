@@ -25,7 +25,7 @@
 module NewBasisCell
 
 
-let find (cM: int Microsoft.FSharp.Math.Matrix) (u:int option array, v:int option array) =
+let find (cM: int Microsoft.FSharp.Math.Matrix) (u:int option array, v:int option array) = // Matrix class no longer available, needs fixing
     let (row, col, _) = 
         Microsoft.FSharp.Math.Matrix.Generic.foldi
             (fun row col ((state_row, state_col, state_value) as state) elem ->
